@@ -1,4 +1,4 @@
-<p align="center"> <h1>Car Detection</h1> </p>
+<h1><center> Car Detection</center></h1> 
 
 ---
 
@@ -16,13 +16,13 @@ This document has been compiled to summarize the methods I followed to complete 
 <h3> Data Extraction </h3>
 The Data provided had both Car and non car images. They were taken from the GTI vehicle image database and the KITTI vision benchmark suite. I plotted the data count to see if I was dealing with a balanced dataset. I had 8792 car images 8968 non-car images. Hence I did not include any data augmentation steps. The data extraction can be seen in lines 263 and 264 in VehicleDetectionPipeline.py. Here is the dataset visualized.
 
-<p align="center"> !(image_files/data_set_.jpg data)</p>
+<p align="center"> <img src="image_files/data_set_.jpg"></p>
 <p align="center"><i>data</i></p>
 
 <h3> Training a Classifier</h3>
 <h4> Feature Extraction: </h4>
 Before the Feature extraction takes place the images are converted to YCrCb color space from the BGR format. This can be seen in the line 74 in function extract_features in the code file.An example of a normal image converted to YCrCb space can be seen below.
-<p align="center">![alt text](image_files/ycrcb_.jpg "YCrCb image")</p>
+<p align="center"><img src="image_files/ycrcb_.jpg"></p>
 <p align="center"><i> YCrCb image </center></p>
 
 * Spatial Features: To include the spatial features the given image is converted into 16x16 image and the resized image is flattend out to get the individual vector. The function bin_spatial (lines 34 -38) in the code does this.
@@ -31,7 +31,7 @@ Before the Feature extraction takes place the images are converted to YCrCb colo
 
 * HOG Features : The Histogram of Oriented gradients is calculated for every image. The HOG features are calculated with 9 orientation bins, 2 pixels per cell and 2 cells per block. The HOG features are converted to single dimensional vector. The HOG feature calculation takes place in the function get_hog_features from line (14-31). The HOG is visualized as below.
 
-<p align="center">![alt text](image_files/hog_.jpg "HIG image")</p>
+<p align="center"><img src="image_files/hog_.jpg "HIG image"></p>
 <p align="center"><i> HOG image </p></i>
 
 The above mentioned three features are considered. They are all single dimensional vectors. They are concatenated to obtain a single dimensional vector of length 6108. The entire process happens in the function extract features in VideoDetectionPipeline from lines 53 -101.
@@ -50,25 +50,25 @@ Once the feature for the particular patch is generated it is sent to the classif
 
 The above procedures are done in the single_image_features function and the search_winodows function that is located in the code file from 163-240 lines. The Search area is indicated below by the green area.
 
-<p align="center">![alt text](image_files/search_.jpg "searchin windows")</p>
+<p align="center"><img src="image_files/search_.jpg"></p>
 <p align="center"><i> Searching image </p></i>
 
 With the hot windows or the detected windows now available we can draw all the windows on the image. This is done by the draw_boxes function located in lines 153 - 161 in the code file. An example of the detected windows drawn can be seen below.
 
-<p align="center">![alt text](image_files/hot_.jpg "hot windows image")</p>
+<p align="center"><img src="image_files/hot_.jpg"></p>
 <p align="center"><i> hot windows image </p></i>
 
 To eliminate the false positives I created a heat map from the detected windows. The logic that follows this is that false positives appear in only certaing windows and not in all scales thus creating only a few hot windows for the region whereas many windows are seen for the true positives. Thus, By making each window add heat or weight to a null image and using a threshold to remove the weak spots we can eliminate the false positives. We can create a single bounding box from the multiple bounding boxes from the heat map. All this is done using the functions add_heat, apply_threshold, draw_labeled_bboxes from lines 242 to 271. 
 
 The heatmap visualized is shown below
 
-<p align="center">![alt text](image_files/heat_.jpg "heatmap ")</p>
+<p align="center"><img src="image_files/heat_.jpg"></p>
 <p align="center"><i> heatmap </p></i>
 
 
 The final output
 
-<p align="center">![alt text](image_files/output_.jpg "output image")</p>
+<p align="center"><img src="image_files/output_.jpg"></p>
 <p align="center"><i> output image </p></i>
 
 <h2> Conclusion: </h2>
