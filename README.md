@@ -23,7 +23,7 @@ The Data provided had both Car and non car images. They were taken from the GTI 
 <h4> Feature Extraction: </h4>
 Before the Feature extraction takes place the images are converted to YCrCb color space from the BGR format. This can be seen in the line 74 in function extract_features in the code file.An example of a normal image converted to YCrCb space can be seen below.
 <p align="center"><img src="image_files/ycrcb_.jpg"></p>
-<p align="center"><i> YCrCb image </center></p>
+<p align="center"><i> YCrCb image</i> </center></p>
 
 * Spatial Features: To include the spatial features the given image is converted into 16x16 image and the resized image is flattend out to get the individual vector. The function bin_spatial (lines 34 -38) in the code does this.
 
