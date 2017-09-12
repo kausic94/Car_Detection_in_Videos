@@ -72,4 +72,4 @@ The final output
 <p align="center"><i> output image </p></i>
 
 <h2> Conclusion: </h2>
-The pipeline for vehicle detection worked fairly well. There were some instances of false positives. Another thing I noted was as I increased the number of scales for the windows to be searched for the computing time increased propotionally. This also happened when I increased the overlap percentage. This is slightly computationally intensive. In order to make a readily deployable model we can consider using multi-threading so the windows being searched can be done concurrently.s
+The pipeline for vehicle detection worked fairly well. There were some instances of false positives. Another thing I noted was as I increased the number of scales for the windows to be searched for the computing time increased propotionally. This also happened when I increased the overlap percentage. This is slightly computationally intensive. In order to make a readily deployable model we can consider using multi-threading so the windows being searched can be done concurrently.
